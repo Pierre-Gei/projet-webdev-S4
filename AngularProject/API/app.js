@@ -2,7 +2,7 @@ const express = require('express');
 const session = require('express-session');
 
 const bodyParser = require('body-parser');
-const {productGet} = require('./productController');
+const {productGet, productPost, productDelete, productPut} = require('./productController');
 const cors = require('cors');
 
 const app = express();
@@ -17,6 +17,9 @@ app.use(bodyParser.json());
 app.use(cors());
 
 app.get('/products', productGet);
+app.post('/products', productPost);
+app.delete('/products/:id', productDelete);
+app.put('/products/:id', productPut);
 
 app.listen(port, () => {
     console.log(`Listening on port ${port}`)
