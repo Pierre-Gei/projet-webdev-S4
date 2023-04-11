@@ -34,14 +34,14 @@ app.get ('/isConnected', checkAuth, isConnected);
 
 
 app.get('/products', productGet);
-app.post('/products', productPost);
-app.delete('/products/:id', productDelete);
-app.put('/products/:id', productPut);
+app.post('/products', checkAuth, productPost);
+app.delete('/products/:id', checkAuth, productDelete);
+app.put('/products/:id', checkAuth, productPut);
 
-app.get('/messages', messageGet);
+app.get('/messages', checkAuth, messageGet);
 app.post('/messages', messagePost);
-app.delete('/messages/:id', messageDelete);
-app.put('/messages/:id', messagePut);
+app.delete('/messages/:id', checkAuth, messageDelete);
+app.put('/messages/:id', checkAuth, messagePut);
 
 app.listen(port, () => {
     console.log(`Listening on port ${port}`)
