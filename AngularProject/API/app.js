@@ -4,6 +4,8 @@ const session = require('express-session');
 const bodyParser = require('body-parser');
 const {productGet, productPost, productDelete, productPut} = require('./productController');
 const {messageGet, messagePost, messageDelete, messagePut} = require('./messageController');
+const {signIn, login, logout, isConnected} = require('./authController');
+
 const cors = require('cors');
 
 const app = express();
@@ -16,6 +18,20 @@ app.use(session({
 
 app.use(bodyParser.json());
 app.use(cors());
+
+function checkAuth(req, res, next) {
+    if (req.session.user) {
+        next();
+    } else {
+        res.status(401).json({ message: 'Unauthorized' });
+    }
+}
+
+app.post ('/signIn', signIn);
+app.post ('/login', login);
+app.post ('/logout', logout);
+app.get ('/isConnected', checkAuth, isConnected);
+
 
 app.get('/products', productGet);
 app.post('/products', productPost);
