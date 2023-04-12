@@ -2,11 +2,11 @@ const mongodb = require('mongodb');
 const MongoClient = mongodb.MongoClient;
 const url = 'mongodb://127.0.0.1:27017';
 
-exports.productGet = async function (req, res) {
+exports.messageGet = async function (req, res) {
     try {
         db = await MongoClient.connect(url);
         let dbo = db.db("products");
-        let datas = await dbo.collection("products").find({}).toArray();
+        let datas = await dbo.collection("messages").find({}).toArray();
         res.status(200).json(datas);
     } catch (error) {
         console.log(error);
@@ -14,16 +14,16 @@ exports.productGet = async function (req, res) {
     }
 };
 
-exports.productPost = async function (req, res) {
-    let product = req.body;
+exports.messagePost = async function (req, res) {
+    let message = req.body;
     try {
-        if (product.name == null || product.name == "") {
-            res.status(400).json({ message: "Le titre est obligatoire" });
+        if (message.title == null || message.title == "") {
+            res.status(400).json({ message: "Missing title" });
         } 
         else {
             db = await MongoClient.connect(url);
             let dbo = db.db("products");
-            let data = await dbo.collection("products").insertOne(product);
+            let data = await dbo.collection("messages").insertOne(message);
             res.status(200).json(data);
         }
     } catch (error) {
@@ -32,11 +32,11 @@ exports.productPost = async function (req, res) {
     }
 }
 
-exports.productDelete = async function (req, res) {
+exports.messageDelete = async function (req, res) {
     try {
         db = await MongoClient.connect(url);
         let dbo = db.db("products");
-        await dbo.collection("products").deleteOne({ _id: new mongodb.ObjectId(req.params.id) });
+        await dbo.collection("messages").deleteOne({ _id: new mongodb.ObjectId(req.params.id) });
         res.status(200).send();
     } catch (err) {
         console.log(err);
@@ -44,11 +44,11 @@ exports.productDelete = async function (req, res) {
     }
 };
 
-exports.productPut = async function (req, res) {
+exports.messagePut = async function (req, res) {
     try {
         db = await MongoClient.connect(url);
         let dbo = db.db("products");
-        await dbo.collection("products").updateOne({_id: new mongodb.ObjectId(req.params.id)}, {$set: req.body});
+        await dbo.collection("messages").updateOne({_id: new mongodb.ObjectId(req.params.id)}, {$set: req.body});
         res.status(200).send();
     } catch (err) {
         console.log(err);
