@@ -1,1 +1,15 @@
-/* You can add global styles to this file, and also import other style files */
+.bg-green-light{
+  background-color: #51cb20 !important;
+}
+.bg-green-dark{
+  background-color: #76b041 !important;
+}
+.bg-green-weird{
+  background-color: #639a88 !important;
+}
+.bg-blue-grey{
+  background-color: #B0B0B0 !important;
+}
+.bg-blue-dark{
+  background-color: #2708a0 !important;
+}
