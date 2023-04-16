@@ -21,4 +21,10 @@ export class AdminComponent implements OnInit {
     }
   }
 
+  loggout() {
+    this.userService.logout().subscribe(() => {
+      this.router.navigate(['']);
+    });
+  }
+
 }
