@@ -17,7 +17,7 @@ app.use(session({
 }));
 
 app.use(bodyParser.json());
-app.use(cors());
+app.use(cors({ credentials: true, origin: 'http://localhost:4200' }));
 
 function checkAuth(req, res, next) {
     if (req.session.user) {
