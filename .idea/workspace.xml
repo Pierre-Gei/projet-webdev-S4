@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="0338b62f-003f-4c81-8d0f-baea2e6c0d79" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/AngularProject/angular.json" beforeDir="false" afterPath="$PROJECT_DIR$/AngularProject/angular.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AngularProject/src/app/app-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/AngularProject/src/app/app-routing.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AngularProject/src/app/app.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/AngularProject/src/app/app.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AngularProject/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/AngularProject/src/app/app.module.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AngularProject/src/app/service/products.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AngularProject/src/app/component/contact/contact.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/AngularProject/src/app/component/contact/contact.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AngularProject/src/app/model/message.ts" beforeDir="false" afterPath="$PROJECT_DIR$/AngularProject/src/app/model/message.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AngularProject/src/app/model/produit.ts" beforeDir="false" afterPath="$PROJECT_DIR$/AngularProject/src/app/model/product.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AngularProject/src/app/model/user.ts" beforeDir="false" afterPath="$PROJECT_DIR$/AngularProject/src/app/model/user.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AngularProject/src/app/service/produits.service.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/AngularProject/src/app/service/products.service.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AngularProject/src/app/service/produits.service.ts" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,9 +34,13 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "D:/Documents/GitHub/projet-webdev-S4/AngularProject",
+    "last_opened_file_path": "E:/Utilisateurs/titin/Documents/ISEN/CIN2/Webdev/Projets/projet-webdev-S4",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "ts.external.directory.path": "C:\\Users\\Pierre Geiguer\\AppData\\Local\\JetBrains\\Toolbox\\apps\\WebStorm\\ch-0\\231.8109.174\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external",
+    "ts.external.directory.path": "E:\\Utilisateurs\\titin\\Documents\\ISEN\\CIN2\\Webdev\\Projets\\projet-webdev-S4\\AngularProject\\node_modules\\typescript\\lib",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -43,6 +53,7 @@
       <option name="presentableId" value="Default" />
       <updated>1680686521789</updated>
       <workItem from="1680686522875" duration="42000" />
+      <workItem from="1681817683552" duration="716000" />
     </task>
     <servers />
   </component>
