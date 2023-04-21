@@ -75,6 +75,25 @@ export class AdminComponent implements OnInit {
     this.selectedProduct = product;
   }
 
+  removeMessage(message: Message) {
+    this.messageService.deleteMessage(message).subscribe(() => {
+      this.listeMessage = this.listeMessage.filter(m => m._id !== message._id);
+    });
+  }
+
+  updateM(message: Message) {
+    message.read = !message.read;
+    this.messageService.updateMessage(message).subscribe(() => {
+      this.listeMessage = this.listeMessage.map(m => {
+        if (m._id === message._id) {
+          return message;
+        }
+        return m;
+      });
+    }
+    );
+  }
+
   loggout() {
     this.userService.logout().subscribe(() => {
       this.router.navigate(['']);

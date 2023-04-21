@@ -48,7 +48,7 @@ exports.messagePut = async function (req, res) {
     try {
         db = await MongoClient.connect(url);
         let dbo = db.db("products");
-        await dbo.collection("messages").updateOne({_id: new mongodb.ObjectId(req.params.id)}, {$set: req.body});
+        await dbo.collection("messages").updateOne({_id: new mongodb.ObjectId(req.params.id)}, {$set: {read: req.body.read}});
         res.status(200).send();
     } catch (err) {
         console.log(err);
