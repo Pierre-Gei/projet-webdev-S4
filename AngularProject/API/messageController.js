@@ -1,3 +1,17 @@
+const CryptoJS = require("crypto-js");
+const key = 'MaCléDeChiffrementDeouFMalade';
+const iv = CryptoJS.lib.WordArray.random(16);
+
+function encrypt(text) {
+    const ciphertext = CryptoJS.AES.encrypt(text, key, { iv: iv });
+    return ciphertext.toString();
+}
+
+function decrypt(text) {
+    const bytes = CryptoJS.AES.decrypt(text, key, { iv: iv });
+    return bytes.toString(CryptoJS.enc.Utf8);
+}
+
 const mongodb = require('mongodb');
 const MongoClient = mongodb.MongoClient;
 const url = 'mongodb://127.0.0.1:27017';
@@ -7,6 +21,14 @@ exports.messageGet = async function (req, res) {
         db = await MongoClient.connect(url);
         let dbo = db.db("products");
         let datas = await dbo.collection("messages").find({}).toArray();
+        datas = datas.map(data => {
+            data.content = decrypt(data.content);
+            data.title = decrypt(data.title);
+            data.phone = decrypt(data.phone);
+            data.name = decrypt(data.name);
+            data.firstName = decrypt(data.firstName);
+            return data;
+        });
         res.status(200).json(datas);
     } catch (error) {
         console.log(error);
@@ -21,6 +43,12 @@ exports.messagePost = async function (req, res) {
             res.status(400).json({ message: "Missing title" });
         } 
         else {
+            message.content = encrypt(message.content);
+            message.title = encrypt(message.title);
+            message.phone = encrypt(message.phone);
+            message.name = encrypt(message.name);
+            message.firstName = encrypt(message.firstName);
+
             db = await MongoClient.connect(url);
             let dbo = db.db("products");
             let data = await dbo.collection("messages").insertOne(message);
