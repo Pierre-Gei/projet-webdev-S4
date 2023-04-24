@@ -6,7 +6,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AcceuilComponent } from './component/accueil/acceuil.component';
-import { ProduitsComponent } from './component/produits/produits.component';
+import { ProductsComponent } from './component/products/products.component';
 import { LoginComponent } from './component/login/login.component';
 import { AdminComponent } from './component/admin/admin.component';
 import { FiltreProduitPipe } from './pipe/filtre-produit.pipe';
@@ -16,7 +16,7 @@ import { ContactComponent } from './component/contact/contact.component';
   declarations: [
     AppComponent,
     AcceuilComponent,
-    ProduitsComponent,
+    ProductsComponent,
     LoginComponent,
     AdminComponent,
     FiltreProduitPipe,

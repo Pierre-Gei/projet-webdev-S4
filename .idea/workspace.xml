@@ -5,13 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0338b62f-003f-4c81-8d0f-baea2e6c0d79" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/AngularProject/src/app/service/products.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AngularProject/src/app/component/contact/contact.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/AngularProject/src/app/component/contact/contact.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AngularProject/src/app/model/message.ts" beforeDir="false" afterPath="$PROJECT_DIR$/AngularProject/src/app/model/message.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AngularProject/src/app/model/produit.ts" beforeDir="false" afterPath="$PROJECT_DIR$/AngularProject/src/app/model/product.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AngularProject/src/app/model/user.ts" beforeDir="false" afterPath="$PROJECT_DIR$/AngularProject/src/app/model/user.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AngularProject/src/app/service/produits.service.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/AngularProject/src/app/service/products.service.spec.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AngularProject/src/app/service/produits.service.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AngularProject/src/app/app-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/AngularProject/src/app/app-routing.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AngularProject/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/AngularProject/src/app/app.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AngularProject/src/app/component/admin/admin.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/AngularProject/src/app/component/admin/admin.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AngularProject/src/app/component/produits/produits.component.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AngularProject/src/app/component/produits/produits.component.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AngularProject/src/app/component/produits/produits.component.spec.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AngularProject/src/app/component/produits/produits.component.ts" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,21 +29,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "E:/Utilisateurs/titin/Documents/ISEN/CIN2/Webdev/Projets/projet-webdev-S4",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "ts.external.directory.path": "E:\\Utilisateurs\\titin\\Documents\\ISEN\\CIN2\\Webdev\\Projets\\projet-webdev-S4\\AngularProject\\node_modules\\typescript\\lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;E:/Utilisateurs/titin/Documents/ISEN/CIN2/Webdev/Projets/projet-webdev-S4&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;E:\\Utilisateurs\\titin\\Documents\\ISEN\\CIN2\\Webdev\\Projets\\projet-webdev-S4\\AngularProject\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -54,6 +54,7 @@
       <updated>1680686521789</updated>
       <workItem from="1680686522875" duration="42000" />
       <workItem from="1681817683552" duration="716000" />
+      <workItem from="1682334631714" duration="391000" />
     </task>
     <servers />
   </component>
