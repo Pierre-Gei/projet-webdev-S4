@@ -1,0 +1,16 @@
+input {
+    border:none;
+    outline:none;
+}
+
+input:hover {
+    cursor: auto;
+}
+td:hover {
+    cursor : auto;
+}
+
+.inputBorder {
+    border : 1px solid #ccc;
+    border-radius : 5px;
+}

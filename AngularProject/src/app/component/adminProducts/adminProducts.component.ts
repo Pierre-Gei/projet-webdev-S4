@@ -18,11 +18,13 @@ export class AdminProductsComponent implements OnInit {
   listeMessage: Array<Message> = [];
   newProduct: Product = {
     name: '',
-    quantity: 0
+    quantity: 0,
+    
   };
   selectedProduct: Product = {
     name: '',
-    quantity: 0
+    quantity: 0,
+    
   };
   editing: boolean = false;
 
@@ -50,7 +52,8 @@ export class AdminProductsComponent implements OnInit {
       this.listeProduct.push(product);
       this.newProduct = {
         name: '',
-        quantity: 0
+        quantity: 0,
+        editable: false
       };
     });
   }
@@ -62,7 +65,7 @@ export class AdminProductsComponent implements OnInit {
   }
 
   updateP(product: Product) {
-    this.editing = false;
+    console.log(product);
     this.productService.updateProduct(product).subscribe(() => {
       this.listeProduct = this.listeProduct.map(p => {
         if (p._id === product._id) {
@@ -83,6 +86,11 @@ export class AdminProductsComponent implements OnInit {
     });
   }
 
+  validateProduct(product: Product) {
+    product.editable = false;
+    this.updateP(product);
+  }
+
   updateM(message: Message) {
     message.read = !message.read;
     this.messageService.updateMessage(message).subscribe(() => {
@@ -96,8 +104,10 @@ export class AdminProductsComponent implements OnInit {
     );
   }
 
-  toggleEditing() {
-    this.editing = !this.editing;
+  toggleEditing(product: Product) {
+    console.log(product);
+    product.editable = !product.editable; 
+    console.log(product);
   }
 
   loggout() {
@@ -105,5 +115,4 @@ export class AdminProductsComponent implements OnInit {
       this.router.navigate(['']);
     });
   }
-
 }

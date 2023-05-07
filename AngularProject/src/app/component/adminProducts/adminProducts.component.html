@@ -1,28 +1,39 @@
-<div class="row">
-    <div class="col-md-4">
-      <ul class="list-group overflow-auto" style="max-height: 500px;">
-        <li class="list-group-item" *ngFor="let product of listeProduct" (click)="selectProduct(product)">
-          {{ product.name }}
-        </li>
-      </ul>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark container-fluid">
+    <a class="navbar-brand ps-4" href="#">SARL Rey</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main-navbar"
+        aria-controls="main-navbar" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="main-navbar">
+        <div class="navbar-nav">
+            <a class="nav-item nav-link active" href="#">Accueil</a>
+            <a class="nav-item nav-link" href="#who">Qui sommes-nous ?</a>
+            <a class="nav-item nav-link" routerLink="/produits">Nos produits</a>
+            <a class="nav-item nav-link" routerLink="/contact">Nous contacter</a>
+        </div>
     </div>
-    <div class="col-md-8" *ngIf="selectedProduct.name !== '' ">
-      <form>
-        <div class="form-group">
-          <label for="productName">Nom du produit</label>
-          <input type="text" class="form-control" id="productName" name="productName" [(ngModel)]="selectedProduct.name" [disabled]="!editing">
-        </div>
-        <div class="form-group">
-          <label for="productQuantity">Quantité du produit</label>
-          <input type="number" class="form-control" id="productQuantity" name="productQuantity" [(ngModel)]="selectedProduct.quantity" [disabled]="!editing">
-        </div>
-        <div class="d-flex justify-content-end">
-          <button class="btn btn-outline-primary mr-2" (click)="toggleEditing()">Modifier</button>
-          <button class="btn btn-primary" (click)="updateP(selectedProduct)">Valider</button>
-        </div>
-      </form>
-    </div>
-  </div>
-  
+</nav>
 
-
+<div class="table-responsive">
+    <table class="table table-bordered">
+        <thead class="thead-dark">
+            <tr>
+                <th>Nom</th>
+                <th>Quantité</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let product of listeProduct">
+                <td><input type="text" [(ngModel)]="product.name" [readOnly]="!product.editable" [ngClass]="{'inputBorder':product.editable}"></td>
+                <td><input type="number" [(ngModel)]="product.quantity" [readOnly]="!product.editable" [ngClass]="{'inputBorder':product.editable}"></td>
+                <td>
+                    <button *ngIf="!product.editable" class="btn btn-sm btn-primary" (click) = "toggleEditing(product)" >Modifier</button>
+                    <button *ngIf="product.editable" class="btn btn-sm btn-success" (click) = "validateProduct(product)">Valider</button>
+                    <button *ngIf = "!product.editable" class="btn btn-sm btn-danger" (click) ="removeProduct(product)">Supprimer</button>
+                    <button *ngIf = "product.editable" class="btn btn-sm btn-warning" (click) ="toggleEditing(product)">Annuler</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

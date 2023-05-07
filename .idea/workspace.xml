@@ -5,14 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0338b62f-003f-4c81-8d0f-baea2e6c0d79" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AngularProject/src/app/app-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/AngularProject/src/app/app-routing.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AngularProject/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/AngularProject/src/app/app.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AngularProject/src/app/component/admin/admin.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/AngularProject/src/app/component/adminProducts/adminProducts.component.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AngularProject/src/app/component/admin/admin.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/AngularProject/src/app/component/adminProducts/adminProducts.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AngularProject/src/app/component/admin/admin.component.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/AngularProject/src/app/component/adminProducts/adminProducts.component.spec.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AngularProject/src/app/component/admin/admin.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/AngularProject/src/app/component/adminProducts/adminProducts.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AngularProject/src/app/component/login/login.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/AngularProject/src/app/component/login/login.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AngularProject/src/app/component/adminProducts/adminProducts.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/AngularProject/src/app/component/adminProducts/adminProducts.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AngularProject/src/app/component/adminProducts/adminProducts.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/AngularProject/src/app/component/adminProducts/adminProducts.component.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,7 +51,7 @@
       <workItem from="1681817683552" duration="716000" />
       <workItem from="1682334631714" duration="391000" />
       <workItem from="1683468852030" duration="25000" />
-      <workItem from="1683468983316" duration="164000" />
+      <workItem from="1683468983316" duration="759000" />
     </task>
     <servers />
   </component>
