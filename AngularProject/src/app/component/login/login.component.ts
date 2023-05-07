@@ -19,7 +19,7 @@ export class LoginComponent {
 
   submit(): void {
     this.userService.login(this.user).subscribe({
-      next: () => { this.router.navigate(['admin']) },
+      next: () => { this.router.navigate(['adminProducts']) },
       error: () => { this.error = true; }
     });
   }

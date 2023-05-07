@@ -8,11 +8,11 @@ import { ProductsService } from 'src/app/service/products.service';
 import { MessagesService } from 'src/app/service/messages.service';
 
 @Component({
-  selector: 'app-admin',
-  templateUrl: './admin.component.html',
-  styleUrls: ['./admin.component.css']
+  selector: 'app-adminProducts',
+  templateUrl: './adminProducts.component.html',
+  styleUrls: ['./adminProducts.component.css']
 })
-export class AdminComponent implements OnInit {
+export class AdminProductsComponent implements OnInit {
 
   listeProduct: Array<Product> = [];
   listeMessage: Array<Message> = [];
@@ -24,6 +24,7 @@ export class AdminComponent implements OnInit {
     name: '',
     quantity: 0
   };
+  editing: boolean = false;
 
   constructor(private userService: UserService, private productService: ProductsService,private messageService: MessagesService, private router: Router) { }
   async ngOnInit() {
@@ -61,6 +62,7 @@ export class AdminComponent implements OnInit {
   }
 
   updateP(product: Product) {
+    this.editing = false;
     this.productService.updateProduct(product).subscribe(() => {
       this.listeProduct = this.listeProduct.map(p => {
         if (p._id === product._id) {
@@ -92,6 +94,10 @@ export class AdminComponent implements OnInit {
       });
     }
     );
+  }
+
+  toggleEditing() {
+    this.editing = !this.editing;
   }
 
   loggout() {

@@ -8,7 +8,7 @@ import { AppComponent } from './app.component';
 import { AcceuilComponent } from './component/accueil/acceuil.component';
 import { ProductsComponent } from './component/products/products.component';
 import { LoginComponent } from './component/login/login.component';
-import { AdminComponent } from './component/admin/admin.component';
+import { AdminProductsComponent } from './component/adminProducts/adminProducts.component';
 import { FiltreProduitPipe } from './pipe/filtre-produit.pipe';
 import { ContactComponent } from './component/contact/contact.component';
 
@@ -18,7 +18,7 @@ import { ContactComponent } from './component/contact/contact.component';
     AcceuilComponent,
     ProductsComponent,
     LoginComponent,
-    AdminComponent,
+    AdminProductsComponent,
     FiltreProduitPipe,
     ContactComponent
   ],

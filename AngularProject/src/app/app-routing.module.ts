@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AcceuilComponent } from './component/accueil/acceuil.component';
 import { ProductsComponent } from './component/products/products.component';
 import { LoginComponent } from './component/login/login.component';
-import { AdminComponent } from './component/admin/admin.component';
+import { AdminProductsComponent } from './component/adminProducts/adminProducts.component';
 import { IsSignedInGuard } from './is-signed-in.guard';
 import { ContactComponent } from './component/contact/contact.component';
 
@@ -25,8 +25,8 @@ const routes: Routes = [
     component: ContactComponent
   },
   {
-    path: 'admin',
-    component: AdminComponent,
+    path: 'adminProducts',
+    component: AdminProductsComponent,
     canActivate: [IsSignedInGuard]
   }
 ];
