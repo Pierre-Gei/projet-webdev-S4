@@ -15,7 +15,6 @@ import { MessagesService } from 'src/app/service/messages.service';
 export class AdminProductsComponent implements OnInit {
 
   listeProduct: Array<Product> = [];
-  listeMessage: Array<Message> = [];
   newProduct: Product = {
     name: '',
     quantity: 0,
@@ -27,6 +26,7 @@ export class AdminProductsComponent implements OnInit {
     
   };
   editing: boolean = false;
+  adding: boolean = false;
 
   constructor(private userService: UserService, private productService: ProductsService,private messageService: MessagesService, private router: Router) { }
   async ngOnInit() {
@@ -34,10 +34,6 @@ export class AdminProductsComponent implements OnInit {
       const products = await lastValueFrom(this.productService.getProducts());
       if (products) {
         this.listeProduct = products;
-      }
-      const messages = await lastValueFrom(this.messageService.getMessages());
-      if (messages) {
-        this.listeMessage = messages;
       }
     } catch (err) {
       this.router.navigate(['login']);
@@ -48,14 +44,24 @@ export class AdminProductsComponent implements OnInit {
     if (!product.name || !product.quantity) {
       return;
     }
-    this.productService.addProduct(product).subscribe(() => {
-      this.listeProduct.push(product);
+    this.adding = false;
+    this.productService.addProduct(product).subscribe((newProduct: Product) => {
+      this.listeProduct.push(newProduct);
       this.newProduct = {
         name: '',
-        quantity: 0,
-        editable: false
+        quantity: 0
       };
+      this.productService.getProducts().subscribe((products: Product[]) => {
+        this.listeProduct = products;
+      });
     });
+  }
+  
+  addingProduct() {
+    this.adding = true;
+  }
+  cancelAdding() {
+    this.adding = false;
   }
 
   removeProduct(product: Product) {
@@ -80,29 +86,13 @@ export class AdminProductsComponent implements OnInit {
     this.selectedProduct = product;
   }
 
-  removeMessage(message: Message) {
-    this.messageService.deleteMessage(message).subscribe(() => {
-      this.listeMessage = this.listeMessage.filter(m => m._id !== message._id);
-    });
-  }
+
 
   validateProduct(product: Product) {
     product.editable = false;
     this.updateP(product);
   }
 
-  updateM(message: Message) {
-    message.read = !message.read;
-    this.messageService.updateMessage(message).subscribe(() => {
-      this.listeMessage = this.listeMessage.map(m => {
-        if (m._id === message._id) {
-          return message;
-        }
-        return m;
-      });
-    }
-    );
-  }
 
   toggleEditing(product: Product) {
     console.log(product);

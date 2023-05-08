@@ -6,6 +6,7 @@ import { LoginComponent } from './component/login/login.component';
 import { AdminProductsComponent } from './component/adminProducts/adminProducts.component';
 import { IsSignedInGuard } from './is-signed-in.guard';
 import { ContactComponent } from './component/contact/contact.component';
+import { AdminMessagesComponent } from './component/admin-messages/admin-messages.component';
 
 const routes: Routes = [
   {
@@ -27,6 +28,11 @@ const routes: Routes = [
   {
     path: 'adminProducts',
     component: AdminProductsComponent,
+    canActivate: [IsSignedInGuard]
+  },
+  {
+    path: 'AdminMessages',
+    component  : AdminMessagesComponent,
     canActivate: [IsSignedInGuard]
   }
 ];

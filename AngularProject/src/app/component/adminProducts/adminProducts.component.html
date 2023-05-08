@@ -9,31 +9,62 @@
             <a class="nav-item nav-link active" href="#">Accueil</a>
             <a class="nav-item nav-link" href="#who">Qui sommes-nous ?</a>
             <a class="nav-item nav-link" routerLink="/produits">Nos produits</a>
-            <a class="nav-item nav-link" routerLink="/contact">Nous contacter</a>
+            <a class="nav-item nav-link" routerLink="/AdminMessages">Messagerie</a>
         </div>
     </div>
 </nav>
+<div class="container-fluid">
+    <div class="row titre">
+        <div class="col-md-12">
+            <h1 class="text-center">Administration des produits</h1>
+        </div>
+        <div class="row liste">
+            <div class="col-md-4">
+                <h2>Liste de produits</h2>
+            </div>
+            <div class="col-md-4 "><input type="text" class="form-control search" placeholder="Rechercher un produit">
+            </div>
+            <div class="col-md-4"><button class="btn btn-primary" (click)="addingProduct()">Ajouter un produit</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>Nom</th>
+                            <th>Quantité</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngIf="adding">
+                            <td><input class="inputBorder" type="text" [(ngModel)]="newProduct.name"></td>
+                            <td><input class="inputBorder" type="number" [(ngModel)]="newProduct.quantity"></td>
+                            <td>
+                                <button class="btn btn-sm btn-success" (click)="add(newProduct)">Ajouter</button>
+                                <button class="btn btn-sm btn-warning" (click)="cancelAdding()">Annuler</button>
+                            </td>
 
-<div class="table-responsive">
-    <table class="table table-bordered">
-        <thead class="thead-dark">
-            <tr>
-                <th>Nom</th>
-                <th>Quantité</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let product of listeProduct">
-                <td><input type="text" [(ngModel)]="product.name" [readOnly]="!product.editable" [ngClass]="{'inputBorder':product.editable}"></td>
-                <td><input type="number" [(ngModel)]="product.quantity" [readOnly]="!product.editable" [ngClass]="{'inputBorder':product.editable}"></td>
-                <td>
-                    <button *ngIf="!product.editable" class="btn btn-sm btn-primary" (click) = "toggleEditing(product)" >Modifier</button>
-                    <button *ngIf="product.editable" class="btn btn-sm btn-success" (click) = "validateProduct(product)">Valider</button>
-                    <button *ngIf = "!product.editable" class="btn btn-sm btn-danger" (click) ="removeProduct(product)">Supprimer</button>
-                    <button *ngIf = "product.editable" class="btn btn-sm btn-warning" (click) ="toggleEditing(product)">Annuler</button>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-</div>
+                        </tr>
+                        <tr *ngFor="let product of listeProduct">
+                            <td><input type="text" [(ngModel)]="product.name" [readOnly]="!product.editable"
+                                    [ngClass]="{'inputBorder':product.editable}"></td>
+                            <td><input type="number" [(ngModel)]="product.quantity" [readOnly]="!product.editable"
+                                    [ngClass]="{'inputBorder':product.editable}"></td>
+                            <td>
+                                <button *ngIf="!product.editable" class="btn btn-sm btn-primary"
+                                    (click)="toggleEditing(product)">Modifier</button>
+                                <button *ngIf="product.editable" class="btn btn-sm btn-success"
+                                    (click)="validateProduct(product)">Valider</button>
+                                <button *ngIf="!product.editable" class="btn btn-sm btn-danger"
+                                    (click)="removeProduct(product)">Supprimer</button>
+                                <button *ngIf="product.editable" class="btn btn-sm btn-warning"
+                                    (click)="toggleEditing(product)">Annuler</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>

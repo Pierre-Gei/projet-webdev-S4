@@ -11,6 +11,7 @@ import { LoginComponent } from './component/login/login.component';
 import { AdminProductsComponent } from './component/adminProducts/adminProducts.component';
 import { FiltreProduitPipe } from './pipe/filtre-produit.pipe';
 import { ContactComponent } from './component/contact/contact.component';
+import { AdminMessagesComponent } from './component/admin-messages/admin-messages.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { ContactComponent } from './component/contact/contact.component';
     LoginComponent,
     AdminProductsComponent,
     FiltreProduitPipe,
-    ContactComponent
+    ContactComponent,
+    AdminMessagesComponent
   ],
   imports: [
     BrowserModule,
