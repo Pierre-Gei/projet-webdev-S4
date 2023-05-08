@@ -29,11 +29,23 @@ export class AdminProductsComponent implements OnInit {
   adding: boolean = false;
 
   constructor(private userService: UserService, private productService: ProductsService,private messageService: MessagesService, private router: Router) { }
+  // async ngOnInit() {
+  //   try{
+  //     const products = await lastValueFrom(this.productService.getProducts());
+  //     if (products) {
+  //       this.listeProduct = products;
+  //     }
+  //   } catch (err) {
+  //     this.router.navigate(['login']);
+  //   }
+  // }
+
   async ngOnInit() {
     try{
       const products = await lastValueFrom(this.productService.getProducts());
       if (products) {
         this.listeProduct = products;
+        this.sortProducts();
       }
     } catch (err) {
       this.router.navigate(['login']);
@@ -53,8 +65,13 @@ export class AdminProductsComponent implements OnInit {
       };
       this.productService.getProducts().subscribe((products: Product[]) => {
         this.listeProduct = products;
+        this.sortProducts();
       });
     });
+  }
+
+  sortProducts() {
+    this.listeProduct.sort((a, b) => a.name.localeCompare(b.name));
   }
   
   addingProduct() {
@@ -86,13 +103,10 @@ export class AdminProductsComponent implements OnInit {
     this.selectedProduct = product;
   }
 
-
-
   validateProduct(product: Product) {
     product.editable = false;
     this.updateP(product);
   }
-
 
   toggleEditing(product: Product) {
     console.log(product);
