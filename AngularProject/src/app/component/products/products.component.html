@@ -28,8 +28,8 @@
       </section>
     </header>
     <section class="d-flex">
-      <div style="margin-top: 72px">
-        <section class="p-5 jumbotron d-flex min-vw-100 align-items-center" style="background-image: url(https://picsum.photos/1920/1080)">
+      <div style="margin-top: 72px" class="col-12">
+        <section class="p-5 jumbotron d-flex align-items-center" style="background-image: url(https://picsum.photos/1920/1080)">
           <div class="container border border-5 border-white" style="backdrop-filter: blur(15px); border-radius: 10px">
             <h1 class="display-4 text-light text-center">Nos produits</h1>
           </div>
@@ -38,7 +38,7 @@
           <div>
             <div class="p-3 d-flex bg-secondary">
               <div class="d-flex col-lg">
-                <p class="text-light">Articles x sur x</p>
+                <p class="text-light" >Nombre d'articles : \\\placeholder\\\</p>
               </div>
               <form class="form d-flex col-lg-4">
                 <input class="form-control mr-sm-2 d-flex" type="search" placeholder="Recherche" aria-label="Search">
@@ -49,8 +49,41 @@
         </div>
       </div>
     </section>
-    <section>
-      
+    <section class="main-section bg-blue-grey pt-5 row justify-content-sm-center m-0 pb-5">
+      <div class="col-lg-11" *ngFor="let products of listeProduct">
+        <div class="m-2 text-light row bg-green-weird justify-content-between rounded-3" id="who">
+          <div class="image col-lg-3 p-0">
+            <img class="rounded-3" src="https://picsum.photos/1920/1080" alt="placeholder" style="object-fit: cover; height: 100%; width: 100%">
+          </div>
+          <div class="col-lg-8">
+            <h1 class="display-4">{{products.name}}</h1>
+            <p class="lead">{{products.description}}</p>
+            <p class="lead text-lg-end">Vendu par lots de : {{products.quantity}}</p>
+          </div>
+        </div>
+      </div>
     </section>
+    <footer class="bg-dark text-light text-center col-12 pb-5">
+      <div class="pt-5 pb-5 m-0 row justify-content-md-evenly">
+        <div class="row col-lg-10">
+          <div class="col-lg-4">
+            <h1 class="display-4">SARL Rey</h1>
+            <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis aperiam illo iusto omnis, facilis animi incidunt ducimus, exercitationem, optio assumenda nam ullam commodi vitae illum unde? Magni ex necessitatibus culpa!</p>
+          </div>
+          <div class="col-lg-4">
+            <h1 class="display-4">Nous contacter</h1>
+            <p class="lead"> Vous avez des questions ? Besoin de renseigements sur l'entreprise et ses produits ?  Nous sommes là pour vous aider !</p>
+            <button class="btn btn-primary" routerLink="/contact">Nous contacter</button>
+          </div>
+          <div class="col-lg-4">
+            <h1 class="display-4">Nous suivre</h1>
+            <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis aperiam illo iusto omnis, facilis animi incidunt ducimus, exercitationem, optio assumenda nam ullam commodi vitae illum unde? Magni ex necessitatibus culpa!</p>
+          </div>
+        </div>
+      </div>
+      <div>
+        <h6>©SARL REY 2023 - Tous droits réservés</h6>
+      </div>
+    </footer>
   </body>
 </html>

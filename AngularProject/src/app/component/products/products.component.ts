@@ -26,4 +26,5 @@ export class ProductsComponent implements OnInit {
 
   }
 
+  protected readonly length = length;
 }
