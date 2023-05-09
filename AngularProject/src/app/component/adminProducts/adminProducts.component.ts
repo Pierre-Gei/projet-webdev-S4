@@ -14,7 +14,8 @@ import { MessagesService } from 'src/app/service/messages.service';
 })
 export class AdminProductsComponent implements OnInit {
 
-  listeProduct: Array<Product> = [];
+  listProduct: Array<Product> = [];
+  listProductFilter: Array<Product> = [];
   newProduct: Product = {
     name: '',
     quantity: 0,
@@ -25,27 +26,19 @@ export class AdminProductsComponent implements OnInit {
     quantity: 0,
     
   };
+  searchText: string = '';
   editing: boolean = false;
   adding: boolean = false;
 
   constructor(private userService: UserService, private productService: ProductsService,private messageService: MessagesService, private router: Router) { }
-  // async ngOnInit() {
-  //   try{
-  //     const products = await lastValueFrom(this.productService.getProducts());
-  //     if (products) {
-  //       this.listeProduct = products;
-  //     }
-  //   } catch (err) {
-  //     this.router.navigate(['login']);
-  //   }
-  // }
 
   async ngOnInit() {
     try{
       const products = await lastValueFrom(this.productService.getProducts());
       if (products) {
-        this.listeProduct = products;
+        this.listProduct = products;
         this.sortProducts();
+        this.listProductFilter = this.listProduct;
       }
     } catch (err) {
       this.router.navigate(['login']);
@@ -58,20 +51,21 @@ export class AdminProductsComponent implements OnInit {
     }
     this.adding = false;
     this.productService.addProduct(product).subscribe((newProduct: Product) => {
-      this.listeProduct.push(newProduct);
+      this.listProduct.push(newProduct);
       this.newProduct = {
         name: '',
         quantity: 0
       };
       this.productService.getProducts().subscribe((products: Product[]) => {
-        this.listeProduct = products;
+        this.listProduct = products;
         this.sortProducts();
+        this.listProductFilter = this.listProduct;
       });
     });
   }
 
   sortProducts() {
-    this.listeProduct.sort((a, b) => a.name.localeCompare(b.name));
+    this.listProduct.sort((a, b) => a.name.localeCompare(b.name));
   }
   
   addingProduct() {
@@ -83,14 +77,14 @@ export class AdminProductsComponent implements OnInit {
 
   removeProduct(product: Product) {
     this.productService.deleteProduct(product).subscribe(() => {
-      this.listeProduct = this.listeProduct.filter(p => p._id !== product._id);
+      this.listProduct = this.listProduct.filter(p => p._id !== product._id);
     });
   }
 
   updateP(product: Product) {
     console.log(product);
     this.productService.updateProduct(product).subscribe(() => {
-      this.listeProduct = this.listeProduct.map(p => {
+      this.listProduct = this.listProduct.map(p => {
         if (p._id === product._id) {
           return product;
         }
@@ -112,6 +106,13 @@ export class AdminProductsComponent implements OnInit {
     console.log(product);
     product.editable = !product.editable; 
     console.log(product);
+  }
+
+  searchProducts(event: any) {
+    this.searchText = event.target.value;
+    this.listProductFilter = this.listProduct.filter((product) => {
+      return product.name.toLowerCase().includes(this.searchText.toLowerCase());
+    });
   }
 
   loggout() {

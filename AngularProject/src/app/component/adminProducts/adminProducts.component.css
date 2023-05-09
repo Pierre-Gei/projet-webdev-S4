@@ -23,3 +23,18 @@ td:hover {
 .titre {
     margin-top: 2%;
 }
+.impair {
+    background-color: #f2f2f2;
+}
+textarea {
+    resize: none;
+    border: none;
+    outline: none;
+    width: 100%;
+}
+textarea:hover {
+    cursor: auto;
+}
+.deconnection:hover {
+    cursor: pointer;
+}

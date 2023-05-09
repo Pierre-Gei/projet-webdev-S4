@@ -11,6 +11,9 @@
             <a class="nav-item nav-link" routerLink="/produits">Nos produits</a>
             <a class="nav-item nav-link" routerLink="/AdminMessages">Messagerie</a>
         </div>
+        <div class="navbar-nav ms-auto">
+            <a class="nav-item nav-link deconnection" (click)="loggout()">Déconnexion</a>
+        </div>
     </div>
 </nav>
 <div class="container-fluid">
@@ -22,18 +25,19 @@
             <div class="col-md-4">
                 <h2>Liste de produits</h2>
             </div>
-            <div class="col-md-4 "><input type="text" class="form-control search" placeholder="Rechercher un produit">
+            <div class="col-md-4 "><input type="text" class="form-control search" placeholder="Rechercher un produit" (keyup)="searchProducts($event)">
             </div>
             <div class="col-md-4"><button class="btn btn-primary" (click)="addingProduct()">Ajouter un produit</button>
             </div>
         </div>
-        <div class="row">
+        <!-- <div class="row">
             <div class="table-responsive">
                 <table class="table table-bordered">
                     <thead class="thead-dark">
                         <tr>
                             <th>Nom</th>
                             <th>Quantité</th>
+                            <th>Description</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -41,17 +45,24 @@
                         <tr *ngIf="adding">
                             <td><input class="inputBorder" type="text" [(ngModel)]="newProduct.name"></td>
                             <td><input class="inputBorder" type="number" [(ngModel)]="newProduct.quantity"></td>
+                            <td><textarea class="inputBorder" [(ngModel)]="newProduct.description"></textarea></td>
                             <td>
                                 <button class="btn btn-sm btn-success" (click)="add(newProduct)">Ajouter</button>
                                 <button class="btn btn-sm btn-warning" (click)="cancelAdding()">Annuler</button>
                             </td>
 
                         </tr>
-                        <tr *ngFor="let product of listeProduct">
+                        <tr *ngFor="let product of listeProduct; let i=index" [ngClass]="{'impair': i % 2 !== 0}">
                             <td><input type="text" [(ngModel)]="product.name" [readOnly]="!product.editable"
-                                    [ngClass]="{'inputBorder':product.editable}"></td>
+                                    [ngClass]="{'inputBorder':product.editable, 'impair':i % 2 !== 0}">
+                            </td>
                             <td><input type="number" [(ngModel)]="product.quantity" [readOnly]="!product.editable"
-                                    [ngClass]="{'inputBorder':product.editable}"></td>
+                                    [ngClass]="{'inputBorder':product.editable, 'impair':i % 2 !== 0}">
+                            </td>
+                            <td>
+                                <textarea [(ngModel)]="product.description" [readOnly]="!product.editable"
+                                    [ngClass]="{'inputBorder':product.editable, 'impair':i % 2 !== 0}"></textarea>
+                            </td>
                             <td>
                                 <button *ngIf="!product.editable" class="btn btn-sm btn-primary"
                                     (click)="toggleEditing(product)">Modifier</button>
@@ -65,6 +76,55 @@
                         </tr>
                     </tbody>
                 </table>
+            </div>
+        </div> -->
+        <div class="row">
+            <div class="col-md-3 ">
+                <h4>Nom</h4>
+            </div>
+            <div class="col-md-3 ">
+                <h4>Quantité</h4>
+            </div>
+            <div class="col-md-3 ">
+                <h4>Description</h4>
+            </div>
+            <div class="col-md-3 ">
+                <h4>Actions</h4>
+            </div>
+        </div>
+        <div class="row" *ngIf="adding">
+            <div class="col-md-3 border"><input class="inputBorder" type="text" [(ngModel)]="newProduct.name"></div>
+            <div class="col-md-3 border"><input class="inputBorder" type="number" [(ngModel)]="newProduct.quantity">
+            </div>
+            <div class="col-md-3 border"><textarea class="inputBorder" [(ngModel)]="newProduct.description"></textarea>
+            </div>
+            <div class="col-md-3 border">
+                <button class="btn btn-sm btn-success" (click)="add(newProduct)">Ajouter</button>
+                <button class="btn btn-sm btn-warning" (click)="cancelAdding()">Annuler</button>
+            </div>
+        </div>
+        <div class="row" *ngFor="let product of listProductFilter || listProduct; let i=index" [ngClass]="{'impair': i % 2 !== 0}">
+            <div class="col-md-3 border">
+                <input type="text" [(ngModel)]="product.name" [readOnly]="!product.editable"
+                    [ngClass]="{'inputBorder':product.editable, 'impair':i % 2 !== 0}">
+            </div>
+            <div class="col-md-3 border">
+                <input type="number" [(ngModel)]="product.quantity" [readOnly]="!product.editable"
+                    [ngClass]="{'inputBorder':product.editable, 'impair':i % 2 !== 0}">
+            </div>
+            <div class="col-md-3 border">
+                <textarea [(ngModel)]="product.description" [readOnly]="!product.editable"
+                    [ngClass]="{'inputBorder':product.editable, 'impair':i % 2 !== 0}"></textarea>
+            </div>
+            <div class="col-md-3 border">
+                <button *ngIf="!product.editable" class="btn btn-sm btn-primary"
+                    (click)="toggleEditing(product)">Modifier</button>
+                <button *ngIf="product.editable" class="btn btn-sm btn-success"
+                    (click)="validateProduct(product)">Valider</button>
+                <button *ngIf="!product.editable" class="btn btn-sm btn-danger"
+                    (click)="removeProduct(product)">Supprimer</button>
+                <button *ngIf="product.editable" class="btn btn-sm btn-warning"
+                    (click)="toggleEditing(product)">Annuler</button>
             </div>
         </div>
     </div>

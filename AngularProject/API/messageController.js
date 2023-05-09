@@ -27,6 +27,7 @@ exports.messageGet = async function (req, res) {
             data.phone = decrypt(data.phone);
             data.name = decrypt(data.name);
             data.firstName = decrypt(data.firstName);
+            data.email = decrypt(data.email);
             return data;
         });
         res.status(200).json(datas);
@@ -48,6 +49,7 @@ exports.messagePost = async function (req, res) {
             message.phone = encrypt(message.phone);
             message.name = encrypt(message.name);
             message.firstName = encrypt(message.firstName);
+            message.email = encrypt(message.email);
 
             db = await MongoClient.connect(url);
             let dbo = db.db("products");
