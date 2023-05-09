@@ -19,7 +19,7 @@
           <div class="collapse navbar-collapse" id="main-navbar">
             <div class="navbar-nav">
               <a class="nav-item nav-link active" routerLink="/">Accueil</a>
-              <a class="nav-item nav-link" routerLink="/">Qui sommes-nous ?</a>
+              <a class="nav-item nav-link" routerLink="/" fragment="who">Qui sommes-nous ?</a>
               <a class="nav-item nav-link" routerLink="/produits">Nos produits</a>
               <a class="nav-item nav-link" routerLink="/contact">Nous contacter</a>
             </div>
@@ -27,6 +27,30 @@
         </nav>
       </section>
     </header>
-    
+    <section class="d-flex">
+      <div style="margin-top: 72px">
+        <section class="p-5 jumbotron d-flex min-vw-100 align-items-center" style="background-image: url(https://picsum.photos/1920/1080)">
+          <div class="container border border-5 border-white" style="backdrop-filter: blur(15px); border-radius: 10px">
+            <h1 class="display-4 text-light text-center">Nos produits</h1>
+          </div>
+        </section>
+        <div class="col-12">
+          <div>
+            <div class="p-3 d-flex bg-secondary">
+              <div class="d-flex col-lg">
+                <p class="text-light">Articles x sur x</p>
+              </div>
+              <form class="form d-flex col-lg-4">
+                <input class="form-control mr-sm-2 d-flex" type="search" placeholder="Recherche" aria-label="Search">
+                <button class="btn btn-success my-2 my-sm-0 d-flex" type="submit">Placeholder</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section>
+      
+    </section>
   </body>
 </html>

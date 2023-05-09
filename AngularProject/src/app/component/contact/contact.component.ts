@@ -15,6 +15,7 @@ export class ContactComponent {
     content: '',
     date: new Date(),
     phone: '',
+    email: '',
     name: '',
     firstName: '',
     read: false
@@ -35,6 +36,7 @@ export class ContactComponent {
       content: '',
       date: new Date(),
       phone: '',
+      email: '',
       name: '',
       firstName: '',
       read: false

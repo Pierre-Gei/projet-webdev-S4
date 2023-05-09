@@ -4,6 +4,7 @@ export interface Message {
     content: string;
     date: Date;
     phone: string;
+    email: string;
     name: string;
     firstName: string;
     read : boolean;
