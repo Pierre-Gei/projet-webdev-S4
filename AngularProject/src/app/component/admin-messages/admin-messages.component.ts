@@ -14,6 +14,17 @@ import { MessagesService } from 'src/app/service/messages.service';
 })
 export class AdminMessagesComponent {
   listeMessage: Array<Message> = [];
+  selectedMessage: Message = {
+    title: '',
+    content: '',
+    date: new Date(),
+    phone: '',
+    email: '',
+    name: '',
+    firstName: '',
+    read: false
+  };
+
 
   constructor(private userService: UserService, private messageService: MessagesService, private router: Router) { }
 
@@ -22,6 +33,7 @@ export class AdminMessagesComponent {
       const messages = await lastValueFrom(this.messageService.getMessages());
       if (messages) {
         this.listeMessage = messages;
+        this.sortMessages();
       }
     } catch (err) {
       this.router.navigate(['login']);
@@ -46,10 +58,23 @@ export class AdminMessagesComponent {
     );
   }
 
+  sortMessages() {
+    this.listeMessage.sort((a, b) => {
+      return new Date(b.date).getTime() - new Date(a.date).getTime();
+    });
+  }
+
+  selectMessage(message: Message) {
+    this.selectedMessage = message;
+    console.log(this.selectedMessage);
+  }
+
+
   loggout() {
     this.userService.logout().subscribe(() => {
       this.router.navigate(['']);
     });
   }
+
 
 }

@@ -12,9 +12,51 @@
             <a class="nav-item nav-link" routerLink="/adminProducts">Administration</a>
         </div>
     </div>
-</nav>
-<div class="row titre">
-    <div class="col-md-12">
-        <h1 class="text-center">Administration des messages</h1>
+    <div class="navbar-nav ms-auto">
+        <a class="nav-item nav-link deconnection" (click)="loggout()">Déconnexion</a>
     </div>
+</nav>
+
+<div class="container-fluid">
+    <div class="row titre">
+        <div class="col-md-12">
+            <h1 class="text-center">Administration des messages</h1>
+        </div>
+        <div class="row liste">
+            <div class="col-md-4"></div>
+            <div class="col-md-4 "><input type="text" class="form-control search" placeholder="Rechercher un produit">
+            </div>
+        </div>
+    </div>
+    <div class="row mailBox">
+        <div class="col-md-3 scrollBar">
+            <div class="container">
+                <div *ngFor="let message of listeMessage" class="row">
+                    <div class="col-md-12">
+                        <div class="card" (click)="selectMessage(message)">
+                            <div class="card-body">
+                                <p class="card-text">{{message.firstName}} {{message.name}}</p>
+                                <!-- <p class="card-text">{{message.title}}</p> -->
+                                <p class="card-text">{{message.date}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-9">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h2>{{selectedMessage.firstName}} {{selectedMessage.name}}</h2>
+                        <p>{{selectedMessage.email}}</p>
+                        <p>{{selectedMessage.date}}</p>
+                        <p>{{selectedMessage.content}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
 </div>
