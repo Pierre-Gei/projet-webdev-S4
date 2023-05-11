@@ -31,6 +31,9 @@ textarea {
     border: none;
     outline: none;
     width: 100%;
+    line-height: 1.3;
+    font-size: 15px;
+    height: 100px;
 }
 textarea:hover {
     cursor: auto;
@@ -38,3 +41,18 @@ textarea:hover {
 .deconnection:hover {
     cursor: pointer;
 }
+.btnWidth {
+    width : 6em;
+    margin: 0 0.5em; 
+}
+.btnDiv {
+    width : auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tableau {
+    margin-top: 2%;
+}
+
