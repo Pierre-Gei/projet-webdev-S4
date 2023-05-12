@@ -121,13 +121,15 @@ export class AdminProductsComponent implements OnInit {
     });
   }
 
-  onFileChange(event: any) {
+  onFileChange(event: any, product: Product) {
     const selectedFile = event.target.files;
+    console.log("data de l'image : " + selectedFile);
     if (selectedFile.length > 0) {
       const [imageFile] = selectedFile;
       const fileReader = new FileReader();
       fileReader.onload = () => {
         const srcData = fileReader.result as string;
+        product.image = srcData;
         console.log('base64:', srcData);
       };
       fileReader.readAsDataURL(imageFile);

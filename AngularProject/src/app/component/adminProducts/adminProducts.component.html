@@ -47,7 +47,7 @@
             </div>
             <div class="row" *ngIf="adding">
                 <div class="col-md-2 border offset-md-2 border"><input class="inputBorder" type="text" [(ngModel)]="newProduct.name"></div>
-                <div class="col-md-2 border"><input class="inputBorder" type="number" [(ngModel)]="newProduct.quantity">
+                <div class="col-md-2 border"><input class="inputBorder" type="number" [(ngModel)]="newProduct.image">
                 </div>
                 <div class="col-md-2 border"><textarea class="inputBorder"
                         [(ngModel)]="newProduct.description"></textarea>
@@ -65,7 +65,7 @@
                         [ngClass]="{'inputBorder':product.editable, 'impair':i % 2 !== 0}">
                 </div>
                 <div class="col-md-2 border" [ngClass]="{'impair': i % 2 !== 0}">
-                    <input type="file" accept="image/*" [(ngModel)]="product.image" [readOnly]="!product.editable" class="local" (change)="onFileChange($event,)"
+                    <input type="file" accept="image/*" [readOnly]="!product.editable" class="local" (change)="onFileChange($event, product)"
                         [ngClass]="{'inputBorder':product.editable, 'impair':i % 2 !== 0}">
                 </div>
                 <div class="col-md-2 border" [ngClass]="{'impair': i % 2 !== 0}">
@@ -89,4 +89,3 @@
             </div>
         </div>
     </div>
-    <script src="base64.js"></script>
