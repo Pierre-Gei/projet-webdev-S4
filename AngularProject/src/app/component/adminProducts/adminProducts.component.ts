@@ -18,12 +18,12 @@ export class AdminProductsComponent implements OnInit {
   listProductFilter: Array<Product> = [];
   newProduct: Product = {
     name: '',
-    quantity: 0,
+    image: '',
     
   };
   selectedProduct: Product = {
     name: '',
-    quantity: 0,
+    image: '',
     
   };
   searchText: string = '';
@@ -46,7 +46,7 @@ export class AdminProductsComponent implements OnInit {
   }
 
   add(product: Product) {
-    if (!product.name || !product.quantity) {
+    if (!product.name) {
       return;
     }
     this.adding = false;
@@ -54,7 +54,7 @@ export class AdminProductsComponent implements OnInit {
       this.listProduct.push(newProduct);
       this.newProduct = {
         name: '',
-        quantity: 0
+        image: ''
       };
       this.productService.getProducts().subscribe((products: Product[]) => {
         this.listProduct = products;
@@ -119,5 +119,18 @@ export class AdminProductsComponent implements OnInit {
     this.userService.logout().subscribe(() => {
       this.router.navigate(['']);
     });
+  }
+
+  onFileChange(event: any) {
+    const selectedFile = event.target.files;
+    if (selectedFile.length > 0) {
+      const [imageFile] = selectedFile;
+      const fileReader = new FileReader();
+      fileReader.onload = () => {
+        const srcData = fileReader.result as string;
+        console.log('base64:', srcData);
+      };
+      fileReader.readAsDataURL(imageFile);
+    }
   }
 }
