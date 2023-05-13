@@ -82,7 +82,25 @@ export class AdminMessagesComponent {
 
   selectMessage(message: Message) {
     this.selectedMessage = message;
-    console.log(this.selectedMessage);
+  }
+
+  deleteMessage(message: Message) {
+    //chercher dans la liste le message selectionner pour supprimer le bon
+    this.listeMessage = this.listeMessage.filter(m => m._id !== message._id);
+    this.messageService.deleteMessage(message).subscribe(() => {
+      this.listeMessage = this.listeMessage.filter(m => m._id !== message._id);
+    }
+    );
+    this.selectedMessage = {
+      title: '',
+      content: '',
+      date: new Date(),
+      phone: '',
+      email: '',
+      name: '',
+      firstName: '',
+      read: false
+    };
   }
 
 
