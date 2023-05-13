@@ -31,27 +31,48 @@
     <div class="row mailBox">
         <div class="col-md-3 scrollBar">
             <div class="container">
-                <div *ngFor="let message of listeMessage" class="row">
+                <div *ngFor="let message of listeMessage" class="row message">
                     <div class="col-md-12">
-                        <div class="card" (click)="selectMessage(message)">
+                        <div class="card" (click)="selectMessage(message); messageRead(message)" [ngClass]="{'messageRead':message.read}">
                             <div class="card-body">
-                                <p class="card-text">{{message.firstName}} {{message.name}}</p>
-                                <!-- <p class="card-text">{{message.title}}</p> -->
-                                <p class="card-text">{{message.date}}</p>
+                                <div>{{message.title}}</div>
+                                <div class="name">{{message.firstName}} {{message.name}}</div>
+                                <div class="date">{{correctDate(message.date)}}</div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col-md-9">
-            <div class="container">
-                <div class="row">
+        <div class="col-md-9 ">
+            <div class="container contentMail ">
+                <div class="row" *ngIf="selectedMessage.name !== ''">
                     <div class="col-md-12">
-                        <h2>{{selectedMessage.firstName}} {{selectedMessage.name}}</h2>
-                        <p>{{selectedMessage.email}}</p>
-                        <p>{{selectedMessage.date}}</p>
-                        <p>{{selectedMessage.content}}</p>
+                        <h2>{{selectedMessage.title}}</h2>
+                    </div>
+                </div>
+                <div class="row" *ngIf="selectedMessage.name !== ''">
+                    <div class="col-md-10">
+                        <p>{{selectedMessage.firstName}} {{selectedMessage.name}} <{{selectedMessage.email}}>
+                        </p>
+                    </div>
+                    <div class="col-md-2" >
+                        <p>{{correctDate(selectedMessage.date)}}</p>
+                    </div>
+                </div>
+                <div class="row mb-4" *ngIf="selectedMessage.name !== ''">
+                    <div class="col-md-3">
+                        <p>Tel : {{selectedMessage.phone}}</p>
+                    </div>
+                </div>
+                <div class="row mb-3" *ngIf="selectedMessage.name !=='' ">
+                    <div class="col-md-12">
+                        <h5>Contenu de la demande : </h5>
+                    </div>
+                </div>
+                <div class="row" *ngIf="selectedMessage.name !== ''">
+                    <div class="col-md-12">
+                        {{selectedMessage.content}}
                     </div>
                 </div>
             </div>

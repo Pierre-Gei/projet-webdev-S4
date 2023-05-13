@@ -13,5 +13,25 @@
 }
 
 .contentMail {
+    background-color:#F7F7F7 ;
+    border-radius: 7px;
     height: 100%;
+    padding: 2%;
+}
+
+.message:hover{
+    cursor: pointer;
+    transform: scale(1.02);
+    transition: all 0.3s ease-in-out;
+}
+.messageRead {
+    background-color: #E8E8E8;
+}
+.name {
+    font-size: 0.9em;
+    color: #A0A0A0;
+}
+.date {
+    font-size: 0.8em;
+    color: #A0A0A0;
 }

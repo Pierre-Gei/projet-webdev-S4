@@ -58,10 +58,26 @@ export class AdminMessagesComponent {
     );
   }
 
+  messageRead(message: Message) {
+    message.read = true;
+    this.messageService.updateMessage(message).subscribe(() => {
+      this.listeMessage = this.listeMessage.map(m => {
+        if (m._id === message._id) {
+          return message;
+        }
+        return m;
+      });
+    }
+    );
+  }
   sortMessages() {
     this.listeMessage.sort((a, b) => {
       return new Date(b.date).getTime() - new Date(a.date).getTime();
     });
+  }
+
+  correctDate(date: Date) {
+    return new Date(date).toLocaleString('fr-FR');
   }
 
   selectMessage(message: Message) {
