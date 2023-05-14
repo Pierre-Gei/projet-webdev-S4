@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,HostListener } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/service/user.service';
 import { firstValueFrom, lastValueFrom } from 'rxjs';
@@ -6,6 +6,7 @@ import { Product } from 'src/app/model/product';
 import { Message } from 'src/app/model/message';
 import { ProductsService } from 'src/app/service/products.service';
 import { MessagesService } from 'src/app/service/messages.service';
+
 
 @Component({
   selector: 'app-admin-messages',
@@ -24,12 +25,21 @@ export class AdminMessagesComponent {
     firstName: '',
     read: false
   };
+  isSmallScreen: boolean = false;
 
 
   constructor(private userService: UserService, private messageService: MessagesService, private router: Router) { }
 
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any) {
+    this.isSmallScreen = event.target.innerWidth < 768;
+    console.log(this.isSmallScreen);
+  }
+
   async ngOnInit() {
     try{
+      this.isSmallScreen = window.innerWidth < 768;
+      console.log("on init" +this.isSmallScreen);
       const messages = await lastValueFrom(this.messageService.getMessages());
       if (messages) {
         this.listeMessage = messages;
@@ -102,7 +112,18 @@ export class AdminMessagesComponent {
       read: false
     };
   }
-
+ initSelectedMessage() {
+    this.selectedMessage = {
+      title: '',
+      content: '',
+      date: new Date(),
+      phone: '',
+      email: '',
+      name: '',
+      firstName: '',
+      read: false
+    };
+  }
 
   loggout() {
     this.userService.logout().subscribe(() => {

@@ -18,61 +18,61 @@
 </nav>
 <div class="container-fluid">
     <div class="row titre">
-        <div class="col-md-12">
+        <div class="col-lg-12">
             <h1 class="text-center">Administration des produits</h1>
         </div>
         <div class="row liste">
-            <div class="col-md-4"></div>
-            <div class="col-md-4 "><input type="text" class="form-control search" placeholder="Rechercher un produit"
+            <div class="col-lg-4"></div>
+            <div class="col-lg-4 "><input type="text" class="form-control search" placeholder="Rechercher un produit"
                     (keyup)="searchProducts($event)">
             </div>
-            <div class="col-md-4"><button class="btn btn-primary" (click)="addingProduct()">Ajouter un produit</button>
+            <div class="col-lg-4"><button class="btn btn-primary" (click)="addingProduct()">Ajouter un produit</button>
             </div>
         </div>
         <div class="tableau">
             <div class="row">
 
-                <div class="col-md-2 offset-md-2">
+                <div class="col-lg-2 offset-lg-2">
                     <h4>Nom</h4>
                 </div>
-                <div class="col-md-2 ">
+                <div class="col-lg-2 ">
                     <h4>Quantité</h4>
                 </div>
-                <div class="col-md-2 ">
+                <div class="col-lg-2 ">
                     <h4>Description</h4>
                 </div>
-                <div class="col-md-2 ">
+                <div class="col-lg-2 ">
                     <h4>Actions</h4>
                 </div>
             </div>
             <div class="row" *ngIf="adding">
-                <div class="col-md-2 border offset-md-2 border"><input class="inputBorder" type="text" [(ngModel)]="newProduct.name"></div>
-                <div class="col-md-2 border"><input class="inputBorder" type="number" [(ngModel)]="newProduct.quantity">
+                <div class="col-lg-2 border offset-lg-2 border"><input class="inputBorder" type="text" [(ngModel)]="newProduct.name"></div>
+                <div class="col-lg-2 border"><input class="inputBorder" type="number" [(ngModel)]="newProduct.quantity">
                 </div>
-                <div class="col-md-2 border"><textarea class="inputBorder"
+                <div class="col-lg-2 border"><textarea class="inputBorder"
                         [(ngModel)]="newProduct.description"></textarea>
                 </div>
-                <div class="col-md-2 border d-flex justify-content-center">
-                <div class="col-md-2 btnDiv">
+                <div class="col-lg-2 border d-flex justify-content-center">
+                <div class="col-lg-2 btnDiv">
                     <button class="btn btn-sm btn-success btnWidth" (click)="add(newProduct)">Ajouter</button>
                     <button class="btn btn-sm btn-warning btnWidth" (click)="cancelAdding()">Annuler</button>
                 </div>
             </div>
             </div>
             <div class="row" *ngFor="let product of listProductFilter || listProduct; let i=index">
-                <div class="col-md-2 offset-md-2 border" [ngClass]="{'impair': i % 2 !== 0}">
+                <div class="col-lg-2 offset-lg-2 border" [ngClass]="{'impair': i % 2 !== 0}">
                     <input type="text" [(ngModel)]="product.name" [readOnly]="!product.editable"
                         [ngClass]="{'inputBorder':product.editable, 'impair':i % 2 !== 0}">
                 </div>
-                <div class="col-md-2 border" [ngClass]="{'impair': i % 2 !== 0}">
+                <div class="col-lg-2 border" [ngClass]="{'impair': i % 2 !== 0}">
                     <input type="number" [(ngModel)]="product.quantity" [readOnly]="!product.editable"
                         [ngClass]="{'inputBorder':product.editable, 'impair':i % 2 !== 0}">
                 </div>
-                <div class="col-md-2 border" [ngClass]="{'impair': i % 2 !== 0}">
+                <div class="col-lg-2 border" [ngClass]="{'impair': i % 2 !== 0}">
                     <textarea [(ngModel)]="product.description" [readOnly]="!product.editable"
                         [ngClass]="{'inputBorder':product.editable, 'impair':i % 2 !== 0}"></textarea>
                 </div>
-                <div class="col-md-2 border d-flex justify-content-center" [ngClass]="{'impair': i % 2 !== 0}">
+                <div class="col-lg-2 border d-flex justify-content-center" [ngClass]="{'impair': i % 2 !== 0}">
                     <div *ngIf="!product.editable" class="btnDiv ">
                         <button class="btn btn-sm btn-outline-primary btnWidth "
                             (click)="toggleEditing(product)">Modifier</button>

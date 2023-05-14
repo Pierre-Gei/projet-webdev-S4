@@ -41,3 +41,13 @@
     bottom: 0;
     margin-bottom: 1.5%;
 }
+
+.hideSmallScreen {
+    display: none;
+}
+.icons {
+    margin-top: 10px;
+}
+.pointer {
+    cursor: pointer;
+}
