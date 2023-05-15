@@ -35,12 +35,12 @@ export class AdminProductsComponent implements OnInit {
 
   @HostListener('window:resize', ['$event'])
   onResize(event: any) {
-    this.isSmallScreen = event.target.innerWidth < 768;
+    this.isSmallScreen = event.target.innerWidth < 1100;
     console.log(this.isSmallScreen);
   }
   async ngOnInit() {
     try{
-      this.isSmallScreen = window.innerWidth < 768;
+      this.isSmallScreen = window.innerWidth < 1100;
       const products = await lastValueFrom(this.productService.getProducts());
       if (products) {
         this.listProduct = products;
@@ -53,10 +53,9 @@ export class AdminProductsComponent implements OnInit {
   }
 
   add(product: Product) {
-    if (!product.name || !product.quantity) {
+    if (!product.name) {
       return;
     }
-    this.adding = false;
     this.productService.addProduct(product).subscribe((newProduct: Product) => {
       this.listProduct.push(newProduct);
       this.newProduct = {
@@ -69,6 +68,7 @@ export class AdminProductsComponent implements OnInit {
         this.listProductFilter = this.listProduct;
       });
     });
+    this.adding = false;
   }
 
   sortProducts() {
@@ -85,7 +85,12 @@ export class AdminProductsComponent implements OnInit {
   removeProduct(product: Product) {
     this.productService.deleteProduct(product).subscribe(() => {
       this.listProduct = this.listProduct.filter(p => p._id !== product._id);
+      this.listProductFilter = this.listProductFilter.filter(p => p._id !== product._id);
     });
+  }
+
+  test(Product: Product){
+    console.log(Product);
   }
 
   updateP(product: Product) {

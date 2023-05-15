@@ -51,8 +51,12 @@ textarea:hover {
     align-items: center;
     justify-content: center;
 }
-
 .tableau {
     margin-top: 2%;
 }
-
+.btnResponsive{
+    margin-right: 15px;
+}
+.widthResponsive {
+    width: 50%;
+}
