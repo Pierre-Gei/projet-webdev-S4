@@ -13,3 +13,27 @@
 .bg-blue-dark{
   background-color: #2708a0 !important;
 }
+
+.titre{
+  font-family: "Alternate Gothic No3 D Regular";
+}
+
+.textes{
+  font-family: "Segoe UI";
+  font-size: x-large;
+}
+
+.smallTextes{
+  font-family: "Segoe UI";
+  font-size: large;
+}
+
+.smallerTextes{
+  font-family: "Segoe UI";
+  font-size: medium;
+}
+
+@font-face {
+  font-family: "Alternate Gothic No3 D Regular";
+  src: url("/assets/Alternate Gothic No3 D Regular.otf");
+}
