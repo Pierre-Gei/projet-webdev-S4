@@ -32,13 +32,13 @@ export class AdminMessagesComponent {
 
   @HostListener('window:resize', ['$event'])
   onResize(event: any) {
-    this.isSmallScreen = event.target.innerWidth < 768;
+    this.isSmallScreen = event.target.innerWidth < 1000;
     console.log(this.isSmallScreen);
   }
 
   async ngOnInit() {
     try{
-      this.isSmallScreen = window.innerWidth < 768;
+      this.isSmallScreen = window.innerWidth < 1000;
       console.log("on init" +this.isSmallScreen);
       const messages = await lastValueFrom(this.messageService.getMessages());
       if (messages) {
