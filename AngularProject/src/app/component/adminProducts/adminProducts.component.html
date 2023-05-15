@@ -16,7 +16,8 @@
         </div>
     </div>
 </nav>
-<div class="container-fluid">
+
+<div class="container-fluid" *ngIf="!isSmallScreen">
     <div class="row titre">
         <div class="col-lg-12">
             <h1 class="text-center">Administration des produits</h1>
@@ -46,18 +47,19 @@
                 </div>
             </div>
             <div class="row" *ngIf="adding">
-                <div class="col-lg-2 border offset-lg-2 border"><input class="inputBorder" type="text" [(ngModel)]="newProduct.name"></div>
+                <div class="col-lg-2 border offset-lg-2 border"><input class="inputBorder" type="text"
+                        [(ngModel)]="newProduct.name"></div>
                 <div class="col-lg-2 border"><input class="inputBorder" type="number" [(ngModel)]="newProduct.quantity">
                 </div>
                 <div class="col-lg-2 border"><textarea class="inputBorder"
                         [(ngModel)]="newProduct.description"></textarea>
                 </div>
                 <div class="col-lg-2 border d-flex justify-content-center">
-                <div class="col-lg-2 btnDiv">
-                    <button class="btn btn-sm btn-success btnWidth" (click)="add(newProduct)">Ajouter</button>
-                    <button class="btn btn-sm btn-warning btnWidth" (click)="cancelAdding()">Annuler</button>
+                    <div class="col-lg-2 btnDiv">
+                        <button class="btn btn-sm btn-success btnWidth" (click)="add(newProduct)">Ajouter</button>
+                        <button class="btn btn-sm btn-warning btnWidth" (click)="cancelAdding()">Annuler</button>
+                    </div>
                 </div>
-            </div>
             </div>
             <div class="row" *ngFor="let product of listProductFilter || listProduct; let i=index">
                 <div class="col-lg-2 offset-lg-2 border" [ngClass]="{'impair': i % 2 !== 0}">
@@ -89,3 +91,6 @@
             </div>
         </div>
     </div>
+</div>
+
+<div *ngIf="isSmallScreen">sazaeaz eazrf sdfgsd sd</div>

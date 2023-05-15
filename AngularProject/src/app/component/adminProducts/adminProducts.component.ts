@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,HostListener } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/service/user.service';
 import { firstValueFrom, lastValueFrom } from 'rxjs';
@@ -29,11 +29,18 @@ export class AdminProductsComponent implements OnInit {
   searchText: string = '';
   editing: boolean = false;
   adding: boolean = false;
+  isSmallScreen: boolean = false;
 
   constructor(private userService: UserService, private productService: ProductsService,private messageService: MessagesService, private router: Router) { }
 
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any) {
+    this.isSmallScreen = event.target.innerWidth < 768;
+    console.log(this.isSmallScreen);
+  }
   async ngOnInit() {
     try{
+      this.isSmallScreen = window.innerWidth < 768;
       const products = await lastValueFrom(this.productService.getProducts());
       if (products) {
         this.listProduct = products;
