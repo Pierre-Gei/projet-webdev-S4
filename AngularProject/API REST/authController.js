@@ -49,9 +49,9 @@ exports.signIn = async function (req, res) {
         else {
             db = await MongoClient.connect(url);
             let dbo = db.db("products");
-            let utilisateurs = await dbo.collection("users").find({login: utilisateur.login }).toArray();
-            if (utilisateurs.length > 0) {
-                res.status(400).json({ message: 'Login déjà utilisé' });
+            let existingUser = await dbo.collection("users").findOne({});
+            if (existingUser) {
+                res.status(400).json({ message: "Impossible de créer un deuxième utilisateur" });
                 return
             }
             else {
