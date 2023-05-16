@@ -11,10 +11,11 @@
             <a class="nav-item nav-link" routerLink="/produits">Nos produits</a>
             <a class="nav-item nav-link active" routerLink="/adminProducts">Administration</a>
             <a class="nav-item nav-link" routerLink="/adminMessages">Gestion des messages</a>
+            <a class="nav-item nav-link deconnection" *ngIf="isSmallScreen" (click)="loggout()">Déconnexion</a>
         </div>
     </div>
     <div class="navbar-nav ms-auto">
-        <a class="nav-item nav-link deconnection" (click)="loggout()">Déconnexion</a>
+        <a class="nav-item nav-link deconnection" *ngIf="!isSmallScreen" (click)="loggout()">Déconnexion</a>
     </div>
 </nav>
 
