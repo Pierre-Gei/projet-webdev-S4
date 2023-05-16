@@ -20,7 +20,7 @@ export class ContactComponent {
     firstName: '',
     read: false
   };
-
+  error:boolean = false;
   constructor(private router : Router, private messageService:MessagesService ) { }
 
   sendMessage() {
@@ -29,6 +29,9 @@ export class ContactComponent {
     this.messageService.addMessage(this.newMessage).subscribe(
       (message: Message) => {
         this.router.navigate(['/']);
+      },
+      (error) => {
+        this.error = true;
       }
     );
     this.newMessage = {

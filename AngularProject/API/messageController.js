@@ -40,10 +40,30 @@ exports.messageGet = async function (req, res) {
 exports.messagePost = async function (req, res) {
     let message = req.body;
     try {
-        if (message.title == null || message.title == "") {
-            res.status(400).json({ message: "Missing title" });
-        } 
+        const phoneNumberPattern = /^\d{10}$/; 
+        const emailPattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/; 
+
+if (
+  message.title == null ||
+  message.title == "" ||
+  message.content == null ||
+  message.content == "" ||
+  message.phone == null ||
+  message.phone == "" ||
+  message.phone.length > 10 ||
+  !phoneNumberPattern.test(message.phone) || 
+  message.name == null ||
+  message.name == "" ||
+  message.firstName == null ||
+  message.firstName == "" ||
+  message.email == null ||
+  message.email == "" ||
+  !emailPattern.test(message.email) 
+) {
+  res.status(400).json({ message: "Missing information or invalid phone/email" });
+}
         else {
+
             message.content = encrypt(message.content);
             message.title = encrypt(message.title);
             message.phone = encrypt(message.phone);

@@ -10,7 +10,7 @@
       <a class="nav-item nav-link" routerLink="/">Qui sommes-nous ?</a>
       <a class="nav-item nav-link" routerLink="/produits">Nos produits</a>
       <a class="nav-item nav-link" routerLink="/adminProducts">Administration</a>
-      <a class="nav-item nav-link" routerLink="/adminMessages">Gestion des messages</a>
+      <a class="nav-item nav-link" routerLink="/AdminMessages">Gestion des messages</a>
     </div>
   </div>
   <div class="navbar-nav ms-auto">
@@ -31,16 +31,19 @@
             <div *ngIf="!isSmallScreen" class="col-sm-4"><button class="btn btn-primary"
                     (click)="addingProduct()">Ajouter un produit</button>
             </div>
-            <div *ngIf="isSmallScreen" class="btnDiv" (click)="addingProduct()"><i
-                    class="fa-solid fa-square-plus fa-xl" style="color:#0d6efd"></i></div>
+            <div *ngIf="isSmallScreen" class="btnDiv" (click)="addingProduct()"><i class="fa-solid fa-square-plus fa-xl"
+                    style="color:#0d6efd"></i></div>
         </div>
         <div class="container-fluid" *ngIf="!isSmallScreen">
             <div class="tableau">
                 <div class="row">
-
-                    <div class="col-lg-2 offset-lg-3">
+                    <div class="col-lg-2 offset-lg-2">
+                        <h4>Image</h4>
+                    </div>
+                    <div class="col-lg-2">
                         <h4>Nom</h4>
                     </div>
+
                     <div class="col-lg-2 ">
                         <h4>Description</h4>
                     </div>
@@ -49,7 +52,10 @@
                     </div>
                 </div>
                 <div class="row" *ngIf="adding">
-                    <div class="col-lg-2 border offset-lg-3 border"><input class="inputBorder" type="text"
+                    <div class="col-lg-2 offset-lg-2 border">
+                        <input type="file"  accept=".jpg, .jpeg, .png"(change)="uploadImage($event, newProduct)" >
+                    </div>
+                    <div class="col-lg-2 border border"><input class="inputBorder" type="text"
                             [(ngModel)]="newProduct.name"></div>
 
                     <div class="col-lg-2 border"><textarea class="inputBorder"
@@ -63,7 +69,15 @@
                     </div>
                 </div>
                 <div class="row" *ngFor="let product of listProductFilter || listProduct; let i=index">
-                    <div class="col-lg-2 offset-lg-3 border" [ngClass]="{'impair': i % 2 !== 0}">
+
+                    <div *ngIf="!product.editable" class="col-lg-2 offset-lg-2 border" [ngClass]="{'impair': i % 2 !== 0}">
+                        <img alt="image" [src]="product.image" class="img-fluid">
+                    </div>
+                    <div *ngIf="product.editable" class="col-lg-2 offset-lg-2 border" [ngClass]="{'impair': i % 2 !== 0}">
+                        <input type="file"  accept=".jpg, .jpeg, .png"(change)="uploadImage($event, product)" >
+                    </div>
+
+                    <div class="col-lg-2 border" [ngClass]="{'impair': i % 2 !== 0}">
                         <input type="text" [(ngModel)]="product.name" [readOnly]="!product.editable"
                             [ngClass]="{'inputBorder':product.editable, 'impair':i % 2 !== 0}">
                     </div>
@@ -97,12 +111,15 @@
             </div>
             <div class="col 3 d-flex justify-content-center">
                 <div class="col-lg-2 btnDiv">
-                    <div class="btnResponsive" (click)="add(newProduct)"><i class="fa-solid fa-square-check fa-2xl" style="color:#198754"></i>
+                    <div class="btnResponsive" (click)="add(newProduct)"><i class="fa-solid fa-square-check fa-2xl"
+                            style="color:#198754"></i>
                     </div>
-                    <div (click)="cancelAdding()"><i class="fa-solid fa-square-xmark fa-2xl"style="color:#dc3545"></i></div>
+                    <div (click)="cancelAdding()"><i class="fa-solid fa-square-xmark fa-2xl" style="color:#dc3545"></i>
+                    </div>
                 </div>
             </div>
-            <div class="col-lg-2">Description :<textarea class="inputBorder" [(ngModel)]="newProduct.description"></textarea>
+            <div class="col-lg-2">Description :<textarea class="inputBorder"
+                    [(ngModel)]="newProduct.description"></textarea>
             </div>
         </div>
 
@@ -115,18 +132,26 @@
                 <div *ngIf="!product.editable" class="btnDiv ">
                     <div class="btnResponsive" (click)="toggleEditing(product)"><i
                             class="fa-solid fa-pen-to-square fa-xl" style="color:#ffc107"></i></div>
-                    <div (click)="removeProduct(product)"><i class="fa-solid fa-trash fa-xl" style="color:#dc3545"></i></div>
+                    <div (click)="removeProduct(product)"><i class="fa-solid fa-trash fa-xl" style="color:#dc3545"></i>
+                    </div>
                 </div>
                 <div *ngIf="product.editable" class="btnDiv" [ngClass]="{'impair': i % 2 !== 0}">
                     <div class="btnResponsive" (click)="validateProduct(product)"><i
                             class="fa-solid fa-square-check fa-2xl" style="color:#198754"></i></div>
-                    <div (click)="toggleEditing(product)"><i class="fa-solid fa-square-xmark fa-2xl" style="color:#dc3545"></i></div>
+                    <div (click)="toggleEditing(product)"><i class="fa-solid fa-square-xmark fa-2xl"
+                            style="color:#dc3545"></i></div>
                 </div>
             </div>
             <div [ngClass]="{'impair': i % 2 !== 0}">
                 Description :
                 <textarea [(ngModel)]="product.description" [readOnly]="!product.editable"
                     [ngClass]="{'inputBorder':product.editable, 'impair':i % 2 !== 0}"></textarea>
+            </div>
+            <div *ngIf="!product.editable" class="col-lg-2 offset-lg-2" [ngClass]="{'impair': i % 2 !== 0}">
+                <img alt="image" [src]="product.image" class="img-fluid">
+            </div>
+            <div *ngIf="product.editable" class="col-lg-2 offset-lg-2" [ngClass]="{'impair': i % 2 !== 0}">
+                <input type="file"  accept=".jpg, .jpeg, .png"(change)="uploadImage($event, product)" >
             </div>
         </div>
     </div>

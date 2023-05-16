@@ -54,12 +54,12 @@
           <div class="col-lg-4 d-flex" *ngFor="let products of listProductFilter || listProduct">
             <div class="m-2 text-dark border-dark border row bg-light justify-content-between rounded-3" id="who">
               <div class="image p-0">
-                <img class="rounded-3" src="https://picsum.photos/1920/1080" alt="placeholder" style="object-fit: cover; height: 100%; width: 100%">
+                <img class="rounded-3" [src]="products.image" alt="placeholder" style="object-fit: cover; height: 100%; width: 100%; ">
               </div>
               <div class="row productInfo">
                 <h1 class="display-4 titre">{{products.name}}</h1>
                 <p class="smallTextes">{{products.description}}</p>
-                <p class="smallTextes text-lg-end">Vendu par lots de : {{products.quantity}}</p>
+                <!-- <p class="smallTextes text-lg-end">Vendu par lots de : {{products.quantity}}</p> -->
               </div>
             </div>
           </div>

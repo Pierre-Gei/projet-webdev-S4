@@ -48,7 +48,7 @@ exports.productPut = async function (req, res) {
     try {
         db = await MongoClient.connect(url);
         let dbo = db.db("products");
-        await dbo.collection("products").updateOne({_id: new mongodb.ObjectId(req.params.id)}, {$set: {name : req.body.name, quantity : req.body.quantity, description: req.body.description}});
+        await dbo.collection("products").updateOne({_id: new mongodb.ObjectId(req.params.id)}, {$set: {name : req.body.name, description: req.body.description, image: req.body.image}});
         res.status(200).send();
     } catch (err) {
         console.log(err);

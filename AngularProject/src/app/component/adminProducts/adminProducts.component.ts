@@ -6,6 +6,8 @@ import { Product } from 'src/app/model/product';
 import { Message } from 'src/app/model/message';
 import { ProductsService } from 'src/app/service/products.service';
 import { MessagesService } from 'src/app/service/messages.service';
+import { Binary } from '@angular/compiler';
+
 
 @Component({
   selector: 'app-adminProducts',
@@ -18,13 +20,14 @@ export class AdminProductsComponent implements OnInit {
   listProductFilter: Array<Product> = [];
   newProduct: Product = {
     name: '',
-    quantity: 0,
+    description: '', 
+    image : '',
     
   };
   selectedProduct: Product = {
     name: '',
-    quantity: 0,
-    
+    description: '',
+    image : '',
   };
   searchText: string = '';
   editing: boolean = false;
@@ -60,7 +63,8 @@ export class AdminProductsComponent implements OnInit {
       this.listProduct.push(newProduct);
       this.newProduct = {
         name: '',
-        quantity: 0
+        description: '',
+        image : '',
       };
       this.productService.getProducts().subscribe((products: Product[]) => {
         this.listProduct = products;
@@ -104,6 +108,24 @@ export class AdminProductsComponent implements OnInit {
       });
     });
   }
+
+  uploadImage(event: any, product: Product) {
+      //convert image to base64
+      const file = event.target.files[0];
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => {
+        if (typeof reader.result === 'string')
+        {
+          product.image = reader.result as string;
+        }
+        else {
+          product.image = "";
+        }
+        console.log(product.image);
+      };
+  }
+
 
   selectProduct(product: Product) {
     this.selectedProduct = product;

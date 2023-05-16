@@ -23,16 +23,19 @@
         <h1 class="h1 text-center text-dark p-3 titre">Nous contacter</h1>
       </div>
       <form id="contact-form" name="contact-form" action="mail.php" method="POST">
+        <div *ngIf="error" class="alert alert-danger">
+          Erreur : informations manquantes ou incorrectes
+      </div>
         <div class="row">
           <div class="col-lg-6 col-12">
             <div class="lg-form lg-0">
                 <div class="row m-2">
                   <label for="name" class="col-lg-3 col-12">Nom :</label>
-                  <input type="text" id="name" name="name" class="form-control col-lg" [(ngModel)]="newMessage.name">
+                  <input type="text" id="name" name="name" class="form-control col-lg" [(ngModel)]="newMessage.name" required>
                 </div>
                 <div class="row m-2">
                   <label for="name" class="col-lg-3 col-12">Prénom :</label>
-                  <input type="text" id="name" name="Firstname" class="form-control col-lg"  [(ngModel)]="newMessage.firstName">
+                  <input type="text" id="name" name="Firstname" class="form-control col-lg"  [(ngModel)]="newMessage.firstName" required>
                 </div>
             </div>
           </div>
@@ -40,11 +43,11 @@
             <div class="lg-form lg-0">
               <div class="row m-2">
                 <label for="email" class="col-lg-3 col-12">E-mail : </label>
-                <input type="text" id="phone" name="email" class="form-control col-lg" [(ngModel)]="newMessage.email" >
+                <input type="text" id="phone" name="email" class="form-control col-lg" [(ngModel)]="newMessage.email" required >
               </div>
               <div class="row m-2">
                 <label for="phone" class="col-lg-3 col-12">Téléphone : </label>
-                <input type="text" id="phone" name="phone" class="form-control col-lg" [(ngModel)]="newMessage.phone">
+                <input type="text" id="phone" name="phone" class="form-control col-lg" [(ngModel)]="newMessage.phone" required>
               </div>
             </div>
           </div>
@@ -55,7 +58,7 @@
               <div class="lg-form lg-0">
                 <div class="row m-2">
                   <label for="subject" class="col-lg-1 col-12">Objet : </label>
-                  <input type="text" id="subject" name="subject" class="form-control col-lg" [(ngModel)]="newMessage.title">
+                  <input type="text" id="subject" name="subject" class="form-control col-lg" [(ngModel)]="newMessage.title" required>
                 </div>
               </div>
             </div>
@@ -64,7 +67,7 @@
             <div class="col-lg-12 col-12">
               <div class="lg-form lg-0">
                 <label for="message" class="mb-2">Message : </label>
-                <textarea type="text" id="message" name="message" rows="2" class="form-control lg-textarea" [(ngModel)]="newMessage.content"></textarea>
+                <textarea type="text" id="message" name="message" rows="2" class="form-control lg-textarea" [(ngModel)]="newMessage.content" required></textarea>
               </div>
             </div>
           </div>

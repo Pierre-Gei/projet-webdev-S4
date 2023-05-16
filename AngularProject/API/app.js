@@ -16,7 +16,9 @@ app.use(session({
     name :'cookieListeApplication'
 }));
 
-app.use(bodyParser.json());
+app.use(bodyParser.json({limit: '16mb'}));
+app.use(bodyParser.urlencoded({ limit: '16mb', extended: true }));
+
 app.use(cors({ credentials: true, origin: 'http://localhost:4200' }));
 
 function checkAuth(req, res, next) {
