@@ -25,14 +25,14 @@
         </div>
         <div class="row liste mb-5">
             <div class="col-sm-4"></div>
-            <div class="col-sm-4" [ngClass]="{'widthResponsive':isSmallScreen}"><input type="text"
-                    class="form-control search" placeholder="Rechercher..." (keyup)="searchProducts($event)">
+            <div class="col-sm-4" [ngClass]="{'widthResponsive':isSmallScreen}">
+              <input type="text" class="form-control search" placeholder="Rechercher..." (keyup)="searchProducts($event)">
             </div>
-            <div *ngIf="!isSmallScreen" class="col-sm-4"><button class="btn btn-primary"
-                    (click)="addingProduct()">Ajouter un produit</button>
+            <div *ngIf="!isSmallScreen" class="col-sm-4">
+              <button class="btn btn-primary" (click)="addingProduct()">Ajouter un produit</button>
             </div>
-            <div *ngIf="isSmallScreen" class="btnDiv" (click)="addingProduct()"><i class="fa-solid fa-square-plus fa-xl"
-                    style="color:#0d6efd"></i></div>
+            <div *ngIf="isSmallScreen" class="btnDiv" (click)="addingProduct()">
+              <i class="fa-solid fa-square-plus fa-xl" style="color:#0d6efd"></i></div>
         </div>
         <div class="container-fluid" *ngIf="!isSmallScreen">
             <div class="tableau">
@@ -53,13 +53,13 @@
                 </div>
                 <div class="row" *ngIf="adding">
                     <div class="col-lg-2 offset-lg-2 border">
-                        <input type="file"  accept=".jpg, .jpeg, .png"(change)="uploadImage($event, newProduct)" >
+                        <input type="file" accept=".jpg, .jpeg, .png"(change)="uploadImage($event, newProduct)" >
                     </div>
-                    <div class="col-lg-2 border border"><input class="inputBorder" type="text"
-                            [(ngModel)]="newProduct.name"></div>
-
-                    <div class="col-lg-2 border"><textarea class="inputBorder"
-                            [(ngModel)]="newProduct.description"></textarea>
+                    <div class="col-lg-2 border border">
+                      <input class="inputBorder" type="text" [(ngModel)]="newProduct.name">
+                    </div>
+                    <div class="col-lg-2 border">
+                      <textarea class="inputBorder" [(ngModel)]="newProduct.description"></textarea>
                     </div>
                     <div class="col-lg-2 border d-flex justify-content-center">
                         <div class="col-lg-2 btnDiv">
