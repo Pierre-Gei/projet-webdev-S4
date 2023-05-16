@@ -17,33 +17,33 @@
     </nav>
   </section>
 </header>
-  <section class="d-flex min-vh-100 align-items-center justify-content-lg-center m-0 text-dark" style="background-image: url(assets/IMG_20230419_153337.jpg); background-size: cover">
-    <div class="row  bg-light rounded-3 p-3">
+  <section class="d-flex min-vh-100 align-items-center container-fluid justify-content-lg-center m-0 text-dark smallTextes" style="background-image: url(assets/IMG_20230419_153337.jpg); background-size: cover">
+    <div class="row bg-light rounded-3 p-3 justify-content-center">
       <div class="row">
-        <h1 class="h1 text-center text-dark p-3">Nous contacter</h1>
+        <h1 class="h1 text-center text-dark p-3 titre">Nous contacter</h1>
       </div>
       <form id="contact-form" name="contact-form" action="mail.php" method="POST">
         <div class="row">
-          <div class="col-lg-6">
+          <div class="col-lg-6 col-12">
             <div class="lg-form lg-0">
                 <div class="row m-2">
-                  <label for="name" class="col-lg-3">Nom :</label>
+                  <label for="name" class="col-lg-3 col-12">Nom :</label>
                   <input type="text" id="name" name="name" class="form-control col-lg" [(ngModel)]="newMessage.name">
                 </div>
                 <div class="row m-2">
-                  <label for="name" class="col-lg-3">Prénom :</label>
+                  <label for="name" class="col-lg-3 col-12">Prénom :</label>
                   <input type="text" id="name" name="Firstname" class="form-control col-lg"  [(ngModel)]="newMessage.firstName">
                 </div>
             </div>
           </div>
-          <div class="col-lg-6">
+          <div class="col-lg-6 col-12">
             <div class="lg-form lg-0">
               <div class="row m-2">
-                <label for="email" class="col-lg-3">E-mail : </label>
+                <label for="email" class="col-lg-3 col-12">E-mail : </label>
                 <input type="text" id="phone" name="email" class="form-control col-lg" [(ngModel)]="newMessage.email" >
               </div>
               <div class="row m-2">
-                <label for="phone" class="col-lg-3">Téléphone : </label>
+                <label for="phone" class="col-lg-3 col-12">Téléphone : </label>
                 <input type="text" id="phone" name="phone" class="form-control col-lg" [(ngModel)]="newMessage.phone">
               </div>
             </div>
@@ -51,17 +51,17 @@
         </div>
         <div class="row">
           <div>
-            <div class="col-lg-12">
+            <div class="col-lg-12 col-12">
               <div class="lg-form lg-0">
                 <div class="row m-2">
-                  <label for="subject" class="col-lg-1">Objet : </label>
+                  <label for="subject" class="col-lg-1 col-12">Objet : </label>
                   <input type="text" id="subject" name="subject" class="form-control col-lg" [(ngModel)]="newMessage.title">
                 </div>
               </div>
             </div>
           </div>
           <div>
-            <div class="col-lg-12">
+            <div class="col-lg-12 col-12">
               <div class="lg-form lg-0">
                 <label for="message" class="mb-2">Message : </label>
                 <textarea type="text" id="message" name="message" rows="2" class="form-control lg-textarea" [(ngModel)]="newMessage.content"></textarea>
@@ -71,7 +71,7 @@
         </div>
       </form>
       <div class="row justify-content-center mt-3">
-        <button class="col-3 btn-primary text-light rounded btn-lg" type="submit" (click) ='sendMessage()'> Envoyer </button>
+        <button class="col-lg-3 btn-primary text-light rounded btn-lg" type="submit" (click) ='sendMessage()'> Envoyer </button>
         <div class="status"></div>
       </div>
     </div>

@@ -31,7 +31,7 @@ const routes: Routes = [
     canActivate: [IsSignedInGuard]
   },
   {
-    path: 'AdminMessages',
+      path: 'adminMessages',
     component  : AdminMessagesComponent,
     canActivate: [IsSignedInGuard]
   }
